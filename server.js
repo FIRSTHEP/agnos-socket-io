@@ -5,6 +5,17 @@ const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 
+setInterval(() => {
+  io.emit('patient_form_update', {
+    firstName: "John",
+    lastName: "Doe",
+    dateOfBirth: "1990-01-01",
+    gender: "Male",
+    phone: "1234567890",
+    email: "johndoe@example.com"
+  });
+}, 5000);
+
 const app = express();
 const server = http.createServer(app);
 
