@@ -5,17 +5,6 @@ const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 
-setInterval(() => {
-  io.emit('patient_form_update', {
-    firstName: "John",
-    lastName: "Doe",
-    dateOfBirth: "1990-01-01",
-    gender: "Male",
-    phone: "1234567890",
-    email: "johndoe@example.com"
-  });
-}, 5000);
-
 const app = express();
 const server = http.createServer(app);
 
@@ -35,7 +24,8 @@ app.use(cors({
 }));
 
 app.get('/', (req, res) => {
-  res.send('Socket.IO server is running');
+  // res.send('Socket.IO server is running');
+  res.send(`Host: ${req.headers.host} Port: ${PORT}`);
 });
 
 io.on('connection', (socket) => {
@@ -52,5 +42,6 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on render port ${PORT}`);
+  console.log()
 });
