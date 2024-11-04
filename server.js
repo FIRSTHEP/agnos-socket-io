@@ -24,7 +24,7 @@ app.use(cors({
 }));
 
 app.get('/', (req, res) => {
-  res.send(`Host: ${req.headers.host} Port:${PORT}`);
+  res.send(`The Socket.IO server is running on ${req.headers.host} at port ${PORT}.`)
 });
 
 io.on('connection', (socket) => {
